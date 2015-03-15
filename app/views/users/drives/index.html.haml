@@ -1,0 +1,63 @@
+- @properties_actived = "active open"
+- @properties_selected = "selected"
+- @position = "Properties"
+.row
+  .col-sm-7
+    .panel.panel-default
+      .panel-heading
+        Create Drives
+      .panel-body
+        = simple_nested_form_for [:users, @drive], html: { class: 'form-horizontal' }, role: "form" do |f|
+          = render partial: 'drive_form', locals: { f: f }
+  .col-sm-5
+    .panel.panel-default
+      .panel-heading
+        My Properties
+      .panel-body
+        %table.table.table-striped.table-bordered.table-hover
+          %thead
+            %tr
+              %th Name
+              %th Actions
+          %tbody
+            - @drives.each do |drive|
+              %tr
+                %td= drive.name_of_building
+                %td
+                  = link_to 'edit drives', edit_users_drive_path(drive), class: 'btn btn-primary'
+.row
+  .col-md-12
+    / start: BASIC TABLE PANEL
+    .panel.panel-default
+      .panel-heading
+        %i.fa.fa-external-link-square
+        Basic table
+        .panel-tools
+          %a.btn.btn-xs.btn-link.panel-collapse.collapses{href: "#"}
+          %a.btn.btn-xs.btn-link.panel-config{"data-toggle" => "modal", href: "#panel-config"}
+            %i.fa.fa-wrench
+          %a.btn.btn-xs.btn-link.panel-refresh{href: "#"}
+            %i.fa.fa-refresh
+          %a.btn.btn-xs.btn-link.panel-expand{href: "#"}
+            %i.fa.fa-resize-full
+          %a.btn.btn-xs.btn-link.panel-close{href: "#"}
+            %i.fa.fa-times
+      .panel-body
+        / = link_to 'new drive', new_users_drive_path, class: 'btn btn-info col-sm-offset-11'
+        %table.table.table-striped.table-bordered.table-hover
+          %thead
+            %tr
+              %th Address
+              %th zip_code
+              %th city
+              %th state
+              %th Actions
+          %tbody
+            - @drives.each do |drive|
+              %tr
+                %td= drive.address
+                %td= drive.zip_code
+                %td= drive.city
+                %td= drive.state
+                %td
+                  = link_to 'edit drives', edit_users_drive_path(drive), class: 'btn btn-primary'

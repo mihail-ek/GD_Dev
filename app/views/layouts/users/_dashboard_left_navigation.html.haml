@@ -1,0 +1,42 @@
+.navbar-content
+  / start: SIDEBAR
+  .main-navigation.navbar-collapse.collapse
+    / start: MAIN MENU TOGGLER BUTTON
+    .navigation-toggler
+      %i.clip-chevron-left
+      %i.clip-chevron-right
+    / end: MAIN MENU TOGGLER BUTTON
+    / start: MAIN NAVIGATION MENU
+    %ul.main-navigation-menu
+      %li{:class => "#{@dashboards_actived}"}
+        = link_to users_dashboard_path do 
+          %i.clip-home-3
+          %span.title Dashboard
+          %span{:class => "#{@dashboards_select}"}
+
+    %ul.main-navigation-menu
+      %li{class: "#{@properties_actived}"}
+        = link_to users_drives_path do 
+          %i.clip-home-3
+          %span.title Property
+          %span{:class => "#{@properties_selected}"}
+    %ul.main-navigation-menu
+      %li{class: "#{@drives_actived}"}
+        = link_to users_drive_ways_path do 
+          %i.clip-home-3
+          %span.title Drives
+          %span{:class => "#{@drives_selected}"}
+          
+      / %li
+      /   %a{href: "javascript:void(0)"}
+      /     %i.clip-screen
+      /     %span.title Drives
+      /     %i.icon-arrow
+      /     %span.selected
+      /   %ul.sub-menu
+      /     %li
+      /       = link_to users_drives_path do
+      /         %span.title Posted Drives
+      /     %li
+      /       = link_to new_users_drive_path do
+      /         %span.title Create Drives
